@@ -7,8 +7,8 @@ $(document).ready(function() {
   })
 
   $('#signUpForm').submit(function() {
-    var values = $(this).serialize();
-    alert(values);
+    var values = $(this).serializeArray()
+    chitter.signUpUser(values)
   })
 
 })
