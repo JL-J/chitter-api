@@ -11,4 +11,10 @@ class chitterAPI {
     })
   }
 
+  signUpUser(values) {
+    var password = values.filter((hash) => hash.name === "password").map((hash) => hash.value).toString();
+    var handle = values.filter((hash) => hash.name === "handle").map((hash) => hash.value).toString();
+    $.post(`${this.url}/users`, {"handle":, "password":})
+  }
+
 }
