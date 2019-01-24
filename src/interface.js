@@ -6,4 +6,9 @@ $(document).ready(function() {
     chitter.renderPeeps()
   })
 
+  $('#signUpForm').submit(function() {
+    var values = $(this).serialize();
+    alert(values);
+  })
+
 })
