@@ -2,14 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <style>
+      .peep {
+        list-style-type: none;
+        border: 1px solid grey;
+        border-radius: 4px;
+        padding: 2px;
+        margin: 2px;
+      }
+    </style>
   </head>
 
   <body>
     <p>Chitter!</p>
     <button id="getPeeps">Enter</button>
-    <div id="listPeeps"></div>
+    <ul id="listPeeps"></ul>
 
     <script src="./src/jquery-3.3.1.js"></script>
+    <script src="./src/chitterAPI.js"></script>
     <script src="./src/interface.js"></script>
   </body>
 </html>
