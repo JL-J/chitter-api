@@ -11,13 +11,33 @@ class chitterAPI {
     })
   }
 
-  signUpUser(handle, password) {
-    let data = {"user": {"handle":handle, "password":password}};
+  _createUser(userData) {
     $.ajax({
       method: 'POST',
       url: `${this.url}/users`,
       headers: 'Content-Type: application/json',
-      data: data
+      data: userData
+    })
+  }
+
+  _createSession(sessionData) {
+    $.ajax({
+      method: 'POST',
+      url: `https://chitter-backend-api.herokuapp.com/sessions`, //can't use this as refers to /user url
+      headers: 'Content-Type: application/json',
+      data: sessionData
+    }).done(function(sessionInfo) {
+       var sessionUserId = sessionInfo.user_id
+       var sessionKey = sessionInfo.session_key
+    })
+  }
+
+  signUpUser(handle, password) {
+    let userData = {"user": {"handle":handle, "password":password}};
+    let sessionData = {"session": {"handle":handle, "password":password}};
+    //this methods need to be attached to an instance of class. don't want a class any more
+    _createUser(userData).then(function() {
+      _createSession(sessionData)
     }).done(function(data){
       console.log(data)
     }).fail(function(error) {
