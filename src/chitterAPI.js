@@ -11,10 +11,16 @@ class chitterAPI {
     })
   }
 
-  signUpUser(values) {
-    var password = values.filter((hash) => hash.name === "password").map((hash) => hash.value).toString();
-    var handle = values.filter((hash) => hash.name === "handle").map((hash) => hash.value).toString();
-    $.post(`${this.url}/users`, {"handle":, "password":})
+  signUpUser(handle, password) {
+    let data = {"user": {"handle":handle, "password":password}};
+    $.ajax({
+      method: 'POST',
+      url: `${this.url}/users`,
+      headers: 'Content-Type: application/json',
+      data: data
+    }).done(function(data){
+      console.log(data)
+    })
   }
 
 }

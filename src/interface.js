@@ -6,9 +6,11 @@ $(document).ready(function() {
     chitter.renderPeeps()
   })
 
-  $('#signUpForm').submit(function() {
-    var values = $(this).serializeArray()
-    chitter.signUpUser(values)
+  $('#signUpForm').submit(function(event) {
+    event.preventDefault();
+    let handle = $('#handle').val()
+    let password = $('#password').val()
+    chitter.signUpUser(handle, password)
   })
 
 })
