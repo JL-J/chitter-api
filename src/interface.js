@@ -10,7 +10,11 @@ $(document).ready(function() {
     event.preventDefault();
     let handle = $('#handle').val()
     let password = $('#password').val()
-    chitter.signUpUser(handle, password)
+    if (handle == "" || password == "") {
+      alert("Fields can not be blank")
+    } else {
+      chitter.signUpUser(handle, password)
+    }
   })
 
 })

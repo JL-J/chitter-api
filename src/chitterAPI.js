@@ -20,6 +20,9 @@ class chitterAPI {
       data: data
     }).done(function(data){
       console.log(data)
+    }).fail(function(error) {
+      // can't get this any further .handle doesn't work, comes back as undefined
+      console.log(error.responseText)
     })
   }
 
