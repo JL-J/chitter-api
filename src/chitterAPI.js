@@ -17,8 +17,8 @@ class chitterAPI {
     var userData = {"user": {"handle":handle, "password":password}};
     var sessionData = {"session": {"handle":handle, "password":password}};
 
-    this._createUser(userData).then(
-      console.log("Finished signupuser function")
+    this._createUser(userData).done(
+      this._createSession(sessionData)
     )
   }
 
@@ -31,19 +31,18 @@ class chitterAPI {
       data: userData,
       error: function(error) {
         console.log(error.responseText)
-      },
-      success: this._createSession
+      }
     })
     return userPromise;
   }
 
-  _createSession() {
+  _createSession(sessionData) {
     console.log("In second AJAX request")
     var sessionPromise = $.ajax({
       method: 'POST',
       url: `https://chitter-backend-api.herokuapp.com/sessions`, //can't use this as refers to /user url
       headers: 'Content-Type: application/json',
-      data: sessionData, 
+      data: sessionData,
       // data: {"session": {"handle":this.data.handle, "password":this.data.password}},
       error: function(error) {
         console.log('Failed to create session ' + error)
