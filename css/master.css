@@ -1,0 +1,11 @@
+h1 {
+  font-family: cursive;
+}
+
+.peep {
+  list-style-type: none;
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 2px;
+  margin: 2px;
+}
