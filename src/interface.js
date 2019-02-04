@@ -8,12 +8,23 @@ $(document).ready(function() {
 
   $('#signUpForm').submit(function(event) {
     event.preventDefault();
-    let handle = $('#handle').val()
-    let password = $('#password').val()
+    let handle = $('#signUpHandlehandle').val()
+    let password = $('#signInPasswordpassword').val()
     if (handle == "" || password == "") {
       alert("Fields can not be blank")
     } else {
       chitter.signUpUser(handle, password)
+    }
+  })
+
+  $('#signInForm').submit(function(event) {
+    event.preventDefault();
+    let handle = $('#signInHandle').val()
+    let password = $('#signInPassword').val()
+    if (handle == "" || password == "") {
+      alert("Fields can not be blank")
+    } else {
+      chitter.loginUser(handle, password)
     }
   })
 

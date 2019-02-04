@@ -19,6 +19,11 @@ class chitterAPI {
     });
   }
 
+  loginUser(handle, password) {
+    var userData = {"handle":handle, "password":password};
+    this._createSession(userData);
+  }
+
   _createUser(userData) {
    var userPromise =  $.ajax({
       method: 'POST',
@@ -42,6 +47,7 @@ class chitterAPI {
         console.log('Failed to create session ' + error)
       },
       success: function(sessionInfo){
+        console.log("Success!")
         document.cookie = `sessionKey=${sessionInfo.session_key}`
         document.cookie = `userId=${sessionInfo.user_id}`
       }
