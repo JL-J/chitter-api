@@ -1,5 +1,61 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, minmax(4em, auto));
+  grid-gap: 1em;
+}
+
+.header {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  align-content: center;
+}
+
+form {
+    margin-bottom: 1.5em;
+}
+
+label {
+	float: left;
+	text-align: right;
+  width: 1em;
+  margin-left: 2.5em;
+  margin-right: 1em;
+  font-family: monospace;
+}
+
+#signUp {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#signIn {
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+button {
+  margin-top: 2em;
+}
+
+.login {
+  border: solid;
+  text-align: center;
+}
+
+.allPeeps {
+}
+
 h1 {
-  font-family: cursive;
+  text-align: center;
+  font-family: monospace;
+  font-weight: bold;
+  font-stretch: expanded;
+  font-size: -webkit-xxx-large;
+}
+
+h2 {
+  font-family: monospace;
 }
 
 .peep {
