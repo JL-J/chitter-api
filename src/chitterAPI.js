@@ -1,8 +1,6 @@
 class chitterAPI {
   constructor() {
     this.url = 'https://chitter-backend-api.herokuapp.com';
-    this.sessionKey;
-    this.sessionUserId;
   }
 
   renderPeeps() {
@@ -14,46 +12,40 @@ class chitterAPI {
   }
 
   signUpUser(handle, password) {
-    var userData = {"user": {"handle":handle, "password":password}};
-    var sessionData = {"session": {"handle":handle, "password":password}};
-
-    this._createUser(userData).done(
-      this._createSession(sessionData)
-    )
+    var self = this;
+    var userData = {"handle":handle, "password":password};
+    this._createUser(userData).done(function() {
+      self._createSession(userData);
+    });
   }
 
   _createUser(userData) {
-    console.log("In first AJAX request")
-    var userPromise = $.ajax({
+   var userPromise =  $.ajax({
       method: 'POST',
       url: `${this.url}/users`,
       headers: 'Content-Type: application/json',
-      data: userData,
+      data: {"user": userData},
       error: function(error) {
         console.log(error.responseText)
-      }
+      },
     })
     return userPromise;
   }
 
-  _createSession(sessionData) {
-    console.log("In second AJAX request")
-    var sessionPromise = $.ajax({
+  _createSession(userData) {
+    $.ajax({
       method: 'POST',
-      url: `https://chitter-backend-api.herokuapp.com/sessions`, //can't use this as refers to /user url
+      url: `https://chitter-backend-api.herokuapp.com/sessions`,
       headers: 'Content-Type: application/json',
-      data: sessionData,
-      // data: {"session": {"handle":this.data.handle, "password":this.data.password}},
+      data: {"session": userData},
       error: function(error) {
         console.log('Failed to create session ' + error)
       },
       success: function(sessionInfo){
-        console.log('In success for create session. ' + sessionInfo);
-        this.sessionUserId = sessionInfo.user_id;
-        this.sessionKey = sessionInfo.session_key;
+        document.cookie = `sessionKey=${sessionInfo.session_key}`
+        document.cookie = `userId=${sessionInfo.user_id}`
       }
     })
-    return sessionPromise;
   }
 
 }
