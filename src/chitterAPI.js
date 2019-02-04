@@ -3,7 +3,7 @@ class chitterAPI {
     this.url = 'https://chitter-backend-api.herokuapp.com';
   }
 
-  renderPeeps() {
+  _renderPeeps() {
     $.get(`${this.url}/peeps`, function(responseData) {
       $(responseData).each(function() {
         $('#listPeeps').append(`<li class="peep" id="${this.id}">${this.body} <br>${this.created_at.substr(11,5)} ${this.created_at.substr(0,10)}, ${this.user.handle}</li>`)
@@ -20,8 +20,11 @@ class chitterAPI {
   }
 
   loginUser(handle, password) {
+    var self = this;
     var userData = {"handle":handle, "password":password};
-    this._createSession(userData);
+    this._createSession(userData).done(function() {
+      self._renderPeeps();
+    });
   }
 
   _createUser(userData) {
@@ -38,20 +41,20 @@ class chitterAPI {
   }
 
   _createSession(userData) {
-    $.ajax({
+    var sessionPromise = $.ajax({
       method: 'POST',
       url: `https://chitter-backend-api.herokuapp.com/sessions`,
       headers: 'Content-Type: application/json',
       data: {"session": userData},
       error: function(error) {
-        console.log('Failed to create session ' + error)
+        console.log(error)
       },
       success: function(sessionInfo){
-        console.log("Success!")
         document.cookie = `sessionKey=${sessionInfo.session_key}`
         document.cookie = `userId=${sessionInfo.user_id}`
       }
     })
+    return sessionPromise;
   }
 
 }
