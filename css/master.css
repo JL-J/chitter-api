@@ -36,11 +36,27 @@ label {
 
 button {
   margin-top: 2em;
+  color: #833AB4;
+  font-family: monospace;
+  font-size: medium;
+}
+
+button:active {
+  background-color: #833AB4;
+  color: white;
+}
+
+input:focus {
+  background-color: #efe4f6;
 }
 
 .login {
   border: solid;
   text-align: center;
+  border-left-color: #F56040;
+  border-bottom-color: #C13584;
+  border-right-color: #F4B400;
+  border-top-color: #E1306C;
 }
 
 .allPeeps {
@@ -52,6 +68,7 @@ h1 {
   font-weight: bold;
   font-stretch: expanded;
   font-size: -webkit-xxx-large;
+  color: #833AB4;
 }
 
 h2 {
