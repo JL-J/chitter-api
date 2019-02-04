@@ -8,8 +8,8 @@ $(document).ready(function() {
 
   $('#signUpForm').submit(function(event) {
     event.preventDefault();
-    let handle = $('#signUpHandlehandle').val()
-    let password = $('#signInPasswordpassword').val()
+    let handle = $('#signUpHandle').val()
+    let password = $('#signInPassword').val()
     if (handle == "" || password == "") {
       alert("Fields can not be blank")
     } else {
