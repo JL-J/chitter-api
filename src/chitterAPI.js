@@ -3,19 +3,13 @@ class chitterAPI {
     this.url = 'https://chitter-backend-api.herokuapp.com';
   }
 
-  _renderPeeps() {
-    $.get(`${this.url}/peeps`, function(responseData) {
-      $(responseData).each(function() {
-        $('#listPeeps').append(`<li class="peep" id="${this.id}">${this.body} <br>${this.created_at.substr(11,5)} ${this.created_at.substr(0,10)}, ${this.user.handle}</li>`)
-      })
-    })
-  }
-
   signUpUser(handle, password) {
     var self = this;
     var userData = {"handle":handle, "password":password};
     this._createUser(userData).done(function() {
-      self._createSession(userData);
+      self._createSession(userData).done(function() {
+        self._renderPeeps();
+      });
     });
   }
 
@@ -25,6 +19,14 @@ class chitterAPI {
     this._createSession(userData).done(function() {
       self._renderPeeps();
     });
+  }
+
+  _renderPeeps() {
+    $.get(`${this.url}/peeps`, function(responseData) {
+      $(responseData).each(function() {
+        $('#listPeeps').append(`<li class="peep" id="${this.id}">${this.body} <br>${this.created_at.substr(11,5)} ${this.created_at.substr(0,10)}, ${this.user.handle}</li>`)
+      })
+    })
   }
 
   _createUser(userData) {
