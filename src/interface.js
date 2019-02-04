@@ -5,7 +5,7 @@ $(document).ready(function() {
   $('#signUpForm').submit(function(event) {
     event.preventDefault();
     let handle = $('#signUpHandle').val()
-    let password = $('#signInPassword').val()
+    let password = $('#signUpPassword').val()
     if (handle == "" || password == "") {
       alert("Fields can not be blank")
     } else {
