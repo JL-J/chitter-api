@@ -6,29 +6,36 @@
   </head>
 
   <body>
-    <h1>Chitter!</h1>
-    <button id="getPeeps">Enter</button>
-    <div class="Login">
-      <h2>Sign Up</h2>
-      <form id="signUpForm" action="index.html" method="post">
-        Username:
-        <input id="signUpHandle" type="text" name="handle">
-        Password:
-        <input id="signUpPassword" type="password" name="password">
-        <input type="submit" name="Submit">
-      </form>
+    <div class="wrapper">
+      <div class="header">
+        <h1>Chitter!</h1>
+      </div>
+      <div class="login" id="signUp">
+        <h2>Sign up</h2>
+        <form id="signUpForm" action="index.html" method="post">
+          <label>Username:</label>
+          <input id="signUpHandle" type="text" name="handle"><br>
+          <br>
+          <label>Password:</label>
+          <input id="signUpPassword" type="password" name="password"><br>
+          <button type="submit" name="button">Submit</button>
+        </form>
+      </div>
+      <div class="login" id="signIn">
+        <h2>Sign in</h2>
+        <form id="signInForm" action="index.html" method="post">
+          <label>Username:</label>
+          <input id="signInHandle" type="text" name="handle"><br>
+          <br>
+          <label>Password:</label>
+          <input id="signInPassword" type="password" name="password"><br>
+          <button type="submit" name="button">Submit</button>
+        </form>
+      </div>
+      <div class="allPeeps">
+        <ul id="listPeeps"></ul>
+      </div>
     </div>
-    <div class="Login">
-      <h2>Sign in</h2>
-      <form id="signInForm" action="index.html" method="post">
-        Username:
-        <input id="signInHandle" type="text" name="handle">
-        Password:
-        <input id="signInPassword" type="password" name="password">
-        <input type="submit" name="Submit">
-      </form>
-    </div>
-    <ul id="listPeeps"></ul>
 
     <script src="./src/jquery-3.3.1.js"></script>
     <script src="./src/chitterAPI.js"></script>
