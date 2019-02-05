@@ -1,7 +1,7 @@
 .wrapper {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(3, minmax(4em, auto));
+  grid-template-rows: repeat(4, minmax(4em, auto));
   grid-gap: 1em;
 }
 
@@ -25,12 +25,20 @@ label {
 }
 
 #signUp {
+  grid-row: 2;
   grid-column-start: 2;
   grid-column-end: 4;
 }
 
 #signIn {
+  grid-row: 2;
   grid-column-start: 5;
+  grid-column-end: 7;
+}
+
+#postPeep {
+  grid-row: 3;
+  grid-column-start: 2;
   grid-column-end: 7;
 }
 
@@ -50,7 +58,16 @@ input:focus {
   background-color: #efe4f6;
 }
 
-.login {
+textarea {
+  padding: 6px;
+  font-weight: 600;
+}
+
+textarea:focus {
+  background-color: #efe4f6;
+}
+
+.postBox {
   border: solid;
   border-radius: 0.5em;
   text-align: center;
@@ -61,7 +78,7 @@ input:focus {
 }
 
 .allPeeps {
-  grid-row: 3;
+  grid-row: 4;
   grid-column-start: 2;
   grid-column-end: 7;
 }

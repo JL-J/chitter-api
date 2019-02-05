@@ -7,10 +7,12 @@
 
   <body>
     <div class="wrapper">
+
       <div class="header">
         <h1>Chitter!</h1>
       </div>
-      <div class="login" id="signUp">
+
+      <div class="postBox" id="signUp">
         <h2>Sign up</h2>
         <form id="signUpForm" action="index.html" method="post">
           <label>Username:</label>
@@ -21,7 +23,7 @@
           <button type="submit" name="button">Submit</button>
         </form>
       </div>
-      <div class="login" id="signIn">
+      <div class="postBox" id="signIn">
         <h2>Sign in</h2>
         <form id="signInForm" action="index.html" method="post">
           <label>Username:</label>
@@ -32,9 +34,20 @@
           <button type="submit" name="button">Submit</button>
         </form>
       </div>
+
+      <div class="postBox" id="postPeep">
+        <h2>Peep!</h2>
+        <form id="postPeepForm" action="index.html" method="post">
+          <label>Message:</label>
+          <textarea id="peepMessage" rows="1" cols="100" maxlength="100"></textarea><br>
+          <button type="submit" name="button">Submit</button>
+        </form>
+      </div>
+
       <div class="allPeeps">
         <ul id="listPeeps"></ul>
       </div>
+
     </div>
 
     <script src="./src/jquery-3.3.1.js"></script>

@@ -24,4 +24,14 @@ $(document).ready(function() {
     }
   })
 
+  $('#postPeepForm').submit(function(event) {
+    event.preventDefault();
+    let body = $('#peepMessage').val()
+    if (body == "") {
+      alert("Fields can not be blank")
+    } else {
+      chitter.postPeep(body)
+    }
+  })
+
 })
