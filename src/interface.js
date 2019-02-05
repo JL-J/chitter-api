@@ -26,11 +26,11 @@ $(document).ready(function() {
 
   $('#postPeepForm').submit(function(event) {
     event.preventDefault();
-    let body = $('#peepMessage').val()
-    if (body == "") {
+    let message = $('#peepMessage').val()
+    if (message == "") {
       alert("Fields can not be blank")
     } else {
-      chitter.postPeep(body)
+      chitter.postPeep(message)
     }
   })
 
