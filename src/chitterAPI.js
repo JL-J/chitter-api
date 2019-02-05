@@ -40,7 +40,7 @@ class chitterAPI {
          'Authorization': 'Token token='+sessionKey,
          'Content-Type': 'application/json'
        },
-       data: {"peep": messageData},
+       data: JSON.stringify({"peep": messageData}),
        error: function(error) {
          console.log(error)
        }
